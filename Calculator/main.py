@@ -1,3 +1,5 @@
+##italianow
+
 import tkinter as tk
 from tkinter import ttk 
 
@@ -106,3 +108,5 @@ btn_percentage = tk.Button(window, text="%", command= lambda:percentage_calculat
 btn_percentage.grid(row=6, column=3)
 
 window.mainloop()
+
+##italianow
