@@ -4,5 +4,5 @@
 
 <br><br>
 
-{base_kit_ml.py ; practice_ml.py} -> DecisionTreeRegressor's, as basic as possible.
+{melbourne_dtr.py ; ai_job_dtr.py} -> DecisionTreeRegressor's, as basic as possible.
 
