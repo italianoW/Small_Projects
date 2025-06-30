@@ -4,32 +4,38 @@ import pandas as pd
 import kagglehub
 import os
 from sklearn.tree import DecisionTreeRegressor
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_absolute_error
+
 
 path = kagglehub.dataset_download("bismasajjad/global-ai-job-market-and-salary-trends-2025")
 
 print(os.listdir(path))
 
-skill_data = pd.read_csv(os.path.join(path, 'ai_job_dataset.csv')) 
+skill_data = pd.read_csv(os.path.join(path, 'ai_job_dataset.csv'))
 
-print(skill_data.columns) 
-print(skill_data.describe()) #naturally doesn't show aplhabetic values unless include='all'
-
-skill_data = skill_data.dropna(axis=0) #drops rows(axis = 0, if it was 1 it would be the column) who have missing data. 
+skill_data = skill_data.dropna(axis=0) #drops rows(axis = 0, if it was 1 it  
+                                        #would be the column) who have missing data.
 x_values = ['years_experience', 'job_description_length','benefits_score']
 
 y = skill_data.salary_usd
 x = skill_data[x_values]
 
-print(x.describe(include='all'))
-print(x.head())
+print(x.describe())
 
-melbourne_model = DecisionTreeRegressor(random_state=1) #uses numeric values in a greedy way to predict through a 
-                                                        #tree, separating state areas used to predict future values.
-melbourne_model.fit(x, y)
+train_x, val_x, train_y, val_y = train_test_split(x, y, random_state = 0)
 
-print("Making predictions for the head:")
-print(x.head,"\n",y.head())
-print("The predictions are")
-print(melbourne_model.predict(x.head()))
+print(train_x.describe())
+print(val_x.describe())
+
+ml_model = DecisionTreeRegressor(random_state=1) #uses numeric values in a greedy way to predict through a
+                                                  #tree separating states areas used to predict future values.
+ml_model.fit(train_x, train_y)
+
+train_predictions = ml_model.predict(train_x)
+val_predictions = ml_model.predict(val_x)
+
+print("Wrong (based only on training):", mean_absolute_error(train_y, train_predictions))
+print("Correct (based on new values): ", mean_absolute_error(val_y, val_predictions))
 
 ##italianow
