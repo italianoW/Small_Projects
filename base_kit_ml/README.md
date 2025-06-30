@@ -4,5 +4,5 @@
 
 <br><br>
 
-{base_kit_ml.py ; practice_ml.py} -> RegressionTree as basic as possible.
+{base_kit_ml.py ; practice_ml.py} -> DecisionTreeRegressor's, as basic as possible.
 
