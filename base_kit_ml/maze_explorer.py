@@ -67,7 +67,7 @@ def step(state, action_index):
     dx, dy = action_dict[actions[action_index]]
     new_state = (state[0] + dx, state[1] + dy)
     if not is_valid(maze, new_state):
-        return state, -69  # parede ou fora dos limites e penalidade
+        return state, -100  # parede ou fora dos limites
     if new_state == goal_state:
         return new_state, 10  # recompensa por chegar ao objetivo
     x ,y = new_state
@@ -85,7 +85,6 @@ def choose_action(state):
 for _ in range(episodes):
     
     state = start_state
-    
     while state != goal_state:
         
         action_index = choose_action(state)
