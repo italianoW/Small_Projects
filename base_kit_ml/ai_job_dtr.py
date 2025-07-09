@@ -28,14 +28,14 @@ train_x, val_x, train_y, val_y = train_test_split(x, y, random_state = 0)
 print(train_x.describe())
 print(val_x.describe())
 
-ml_model = DecisionTreeRegressor(random_state=1) #uses numeric values in a greedy way to predict through a
+ml_model = DecisionTreeRegressor(max_leaf_nodes=50000,random_state=1) #uses numeric values in a greedy way to predict through a
                                                   #tree separating states areas used to predict future values.
 ml_model.fit(train_x, train_y)
 
 train_predictions = ml_model.predict(train_x)
 val_predictions = ml_model.predict(val_x)
 
-print("Wrong (based only on training):", mean_absolute_error(train_y, train_predictions))
-print("Correct (based on new values): ", mean_absolute_error(val_y, val_predictions))
+print("(based only on training):", mean_absolute_error(train_y, train_predictions))
+print("(based on new values): ", mean_absolute_error(val_y, val_predictions))
 
 ##italianow
