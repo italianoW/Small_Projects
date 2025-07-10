@@ -37,7 +37,7 @@ def mse(saida, esperado):
 
 # === Treinamento ===
 taxa_aprendizado = 0.01
-epocas = 201
+epocas = 101
 
 for epoca in range(epocas):
     erro_total = 0
