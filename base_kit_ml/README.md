@@ -7,4 +7,6 @@
 <br>
 
 { maze_explorer.py } -> Q-learning 2D maze explorer.
+<br>
 
+{ iris_dataset.py } -> Manual Neural Network for flower classification. 
