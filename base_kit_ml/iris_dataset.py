@@ -74,9 +74,3 @@ for epoca in range(epocas):
     if epoca % 50 == 0:
         print(f"Época {epoca} | Erro médio: {erro_total / len(atributos):.4f}")
 
-# === Teste ===
-print("\nPrevisões finais:")
-for i, entrada in enumerate(atributos):
-    saida = [bias[k] + sum(entrada[j] * pesos[j][k] for j in range(4)) for k in range(3)]
-    classe = saida.index(max(saida))  # pega a saída mais alta
-    
